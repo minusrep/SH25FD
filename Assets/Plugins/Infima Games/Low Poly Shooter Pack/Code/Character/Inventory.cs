@@ -39,6 +39,9 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override WeaponBehaviour Equip(int index)
         {
+            if (equipped != null) 
+                return equipped;
+            
             //If we have no weapons, we can't really equip anything.
             if (weapons == null)
                 return equipped;

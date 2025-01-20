@@ -21,6 +21,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         [SerializeField]
         private GameObject qualitySettingsPrefab;
 
+        [SerializeField] private bool _createVisibleOnAwake;
+        
+        
         #endregion
 
         #region UNITY
@@ -30,6 +33,8 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         private void Awake()
         {
+            if (!_createVisibleOnAwake) return;
+            
             //Spawn Interface.
             Instantiate(canvasPrefab);
             //Spawn Quality Settings Menu.
