@@ -26,7 +26,7 @@ namespace Root
                 
                 OnChange?.Invoke();
                 
-                OnDie?.Invoke();
+                if (_current == 0) OnDie?.Invoke();
             }
         }
         
@@ -39,6 +39,13 @@ namespace Root
         public void TakeDamage(float damage, Action callback = null)
         {
             Current -= damage;
+            
+            callback?.Invoke();
+        }
+
+        public void TakeHealth(float health, Action callback = null)
+        {
+            Current += health;
             
             callback?.Invoke();
         }

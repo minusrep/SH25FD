@@ -1,7 +1,7 @@
-using Root;
+ using Root;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -9,17 +9,25 @@ public class HUD : MonoBehaviour
     
     [SerializeField] private Image _healthBar;
      
+    [SerializeField] private TextMeshProUGUI _interactableDescription;
+
+    [SerializeField] private TextMeshProUGUI _taskDescription;
+    
     [SerializeField] private PlayerDamageHandler _playerDamageHandler;
+    
+    [SerializeField] private PlayerInteractor _playerInteractor;
     
     private void Awake()
     {
         _health = _playerDamageHandler.Health;
 
-        var health = 1f - _health.Progress;
+        _health.OnChange += () => SetHealth(1f - _health.Progress);
+
+        _playerInteractor.OnInteractableChange += SetInteractableDescription;
+
+        _playerInteractor.OnHint += (hint) => SetHint(hint ? hint.Description : string.Empty);
         
-        _health.OnChange += () => SetHealth(health);
-        
-        SetHealth(health);
+        SetHealth(1f - _health.Progress);
     }
 
     private void SetHealth(float value)
@@ -29,5 +37,17 @@ public class HUD : MonoBehaviour
         color.a = value;
 
         _healthBar.color = color;
+    }
+
+    private void SetInteractableDescription(IInteractable interactable)
+    {
+        var description = interactable != null ? interactable.Description : string.Empty;
+        
+        _interactableDescription.text = description;
+    }
+
+    private void SetHint(string hint)
+    {
+        _taskDescription.text = hint;
     }
 }

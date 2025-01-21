@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace Root
 {
@@ -14,13 +15,13 @@ namespace Root
         private Animator _animator;
         
         private DetectionHandler _detectionHandler;
+
+        private Attack _attack;
         
         [SerializeField] private float _damage;
         
         [SerializeField] private float _attackDistance;
 
-        [SerializeField] private Collider _attackCollider;
-        
         [SerializeField] private Color _gizmosColor;
 
         private void OnDrawGizmos()
@@ -36,9 +37,13 @@ namespace Root
             
             _animator = GetComponentInChildren<Animator>();
 
+            _attack = GetComponentInChildren<Attack>();
+            
             _detectionHandler = GetComponent<DetectionHandler>();
             
             _navMeshAgent.stoppingDistance = _attackDistance;
+
+            _attack.Damage = _damage;
         }
 
         private void Update()
@@ -47,7 +52,7 @@ namespace Root
             
             _animator.SetBool(AttackingAnimation, detected);
             
-            _attackCollider.enabled = detected;
+            _attack.Active = detected;
         }
     }
 }

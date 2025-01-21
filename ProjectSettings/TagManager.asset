@@ -17,6 +17,7 @@ TagManager:
   - Dirt (Static)
   - Wood
   - Attack
+  - Hint
   layers:
   - Default
   - TransparentFX

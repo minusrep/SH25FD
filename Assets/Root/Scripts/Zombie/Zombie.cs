@@ -9,6 +9,8 @@ namespace Root
     [RequireComponent(typeof(ZombieCombat))]
     
     [RequireComponent(typeof(DetectionHandler))]
+ 
+    [RequireComponent(typeof(ZombieCleaner))]
     public class Zombie : MonoBehaviour
     {
         public ZombieMovement Movement { get; private set; }

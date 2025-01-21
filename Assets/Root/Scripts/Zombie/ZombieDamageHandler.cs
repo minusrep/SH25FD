@@ -44,11 +44,9 @@ namespace Root
             switch (hitType)
             {
                 case HitType.Head:
-                    Debug.Log($"Head Damage: {_headDamage}");
                     _health.TakeDamage(_headDamage);
                     break;
                 case HitType.Default:
-                    Debug.Log($"Default Damage: {_defaultDamage}");
                     _health.TakeDamage(_headDamage);
                     break;
             }
