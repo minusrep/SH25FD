@@ -447,7 +447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961917959833669568}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b28c8f6095448fc8a7a24e8388c12f5, type: 3}
   m_Name: 
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   weaponIndexEquippedAtStart: 6
   inventory: {fileID: 8195332293463410009}
   grenadesUnlimited: 0
-  grenadeTotal: 10
+  grenadeTotal: 0
   grenadeSpawnOffset: 1
   grenadePrefab: {fileID: 1948591290861370, guid: 7b04fe350ed10a741a1e245447860d9e,
     type: 3}
@@ -9639,6 +9639,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8174372834435582359, guid: 9482e0a2ae6a92742bbe72e00f29f763,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8174372834435582361, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}
       propertyPath: m_Layer
@@ -10268,6 +10273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763,
+        type: 3}
+      propertyPath: magazineIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9179556955402902889, guid: 9482e0a2ae6a92742bbe72e00f29f763,
         type: 3}

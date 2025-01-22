@@ -1,4 +1,5 @@
 ﻿using System;
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 namespace Root
@@ -13,12 +14,24 @@ namespace Root
         
         private PlayerDamageHandler _damageHandler;
         
+        private Character _character;
+        
         private void Awake()
         {
             _damageHandler = GetComponent<PlayerDamageHandler>();
             
             _interactor = GetComponent<PlayerInteractor>();
             
+            _character = GetComponent<Character>();
+
+            _interactor.OnInteract += interactable =>
+            {
+                var pickableWeapon = interactable as PickableWeapon;
+
+                if (!pickableWeapon) return;
+                
+                _character.SetWeapon(pickableWeapon.WeaponID);
+            };
         }
 
         private void OnEnable()

@@ -19,6 +19,8 @@
 # Игнорировать файлы логов
 [Ll]ogs/
 
+[Re]cordings/
+
 # Игнорировать файлы Asset Store
 /[Aa]ssets/AssetStoreTools*
 

@@ -68,6 +68,35 @@ namespace InfimaGames.LowPolyShooterPack
             //Return.
             return equipped;
         }
+
+        public WeaponBehaviour MyEquip(int index)
+        {
+            //If we have no weapons, we can't really equip anything.
+            if (weapons == null)
+                return equipped;
+            
+            //The index needs to be within the array's bounds.
+            if (index > weapons.Length - 1)
+                return equipped;
+
+            //No point in allowing equipping the already-equipped weapon.
+            if (equippedIndex == index)
+                return equipped;
+            
+            //Disable the currently equipped weapon, if we have one.
+            if (equipped != null)
+                equipped.gameObject.SetActive(false);
+
+            //Update index.
+            equippedIndex = index;
+            //Update equipped.
+            equipped = weapons[equippedIndex];
+            //Activate the newly-equipped weapon.
+            equipped.gameObject.SetActive(true);
+
+            //Return.
+            return equipped;
+        }
         
         #endregion
 

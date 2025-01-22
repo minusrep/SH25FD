@@ -1,4 +1,5 @@
 ﻿using System;
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 namespace Root

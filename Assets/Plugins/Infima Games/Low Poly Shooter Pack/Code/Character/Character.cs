@@ -671,6 +671,27 @@ namespace InfimaGames.LowPolyShooterPack
 			//Refresh.
 			RefreshWeaponSetup();
 		}
+		private IEnumerator MyEquip(int index = 0)
+		{
+			//Only if we're not holstered, holster. If we are already, we don't need to wait.
+			if(!holstered)
+			{
+				//Holster.
+				SetHolstered(holstering = true);
+				//Wait.
+				yield return new WaitUntil(() => holstering == false);
+			}
+			//Unholster. We do this just in case we were holstered.
+			SetHolstered(false);
+			//Play Unholster Animation.
+			characterAnimator.Play("Unholster", layerHolster, 0);
+			
+			//Equip The New Weapon.
+			(inventory as Inventory).MyEquip(index);
+			//Refresh.
+			RefreshWeaponSetup();
+		}
+		
 		/// <summary>
 		/// Refresh all weapon things to make sure we're all set up!
 		/// </summary>
@@ -1315,6 +1336,12 @@ namespace InfimaGames.LowPolyShooterPack
 						StartCoroutine(nameof(Equip), indexNext);
 					break;
 			}
+		}
+
+		public void SetWeapon(int index)
+		{
+			if (CanChangeWeapon() && (inventory.GetEquippedIndex() != index))
+				StartCoroutine(nameof(MyEquip), index);
 		}
 		
 		public void OnLockCursor(InputAction.CallbackContext context)
